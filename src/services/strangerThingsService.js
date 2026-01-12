@@ -1,8 +1,20 @@
 async function getAllCharacter(){
+try{
+    const response = await fetch('https://stranger-things-api.fly.dev/api/v1/character222s')
 
-    const response = await fetch('https://stranger-things-api.fly.dev/api/v1/characters')
+
+
+    if(!response.ok){
+        throw new Error("respuesta no valida")
+    }
+
     const data = await response.json()
-    return data
+    return [data,undefined]
+
+}catch(error){
+    console.log(error)
+    return [ undefined, error.message]
+}
 
 }
 
